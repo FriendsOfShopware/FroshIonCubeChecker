@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="frosh_ion_cube_checker.plugin_loader" class="FroshIonCubeChecker\Components\PluginLoader">
+            <argument type="service" id="models" />
+        </service>
+        <service id="frosh_ion_cube_checker.ion_cube_detector" class="FroshIonCubeChecker\Components\IonCubeDetector">
+            <argument type="service" id="frosh_ion_cube_checker.plugin_loader" />
+        </service>
+        <service id="frosh_ion_cube_checker.commands.ion_cube" class="FroshIonCubeChecker\Commands\IonCube">
+            <tag name="console.command" />
+        </service>
+    </services>
+</container>

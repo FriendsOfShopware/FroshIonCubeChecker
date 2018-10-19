@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label>IonCube Checker</label>
+    <label lang="de">IonCube Checker</label>
+    <version>1.0.0</version>
+    <copyright>Friends of Shopware</copyright>
+    <license>MIT</license>
+    <link>https://github.com/FriendsOfShopware/FroshIonCubeChecker</link>
+    <author>Friends of Shopware</author>
+
+    <changelog version="1.0.0">
+        <changes>🎉 Friends of Shopware Release 🎉</changes>
+    </changelog>
+</plugin>

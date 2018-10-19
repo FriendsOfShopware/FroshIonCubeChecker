@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/menu.xsd">
+    <entries>
+        <entry>
+            <name>IonCubeChecker</name>
+            <label>IonCube Checker</label>
+            <controller>IoncubeChecker</controller>
+            <action>index</action>
+            <class>sprite-lock--exclamation</class>
+            <parent>ConfigurationMenu</parent>
+        </entry>
+    </entries>
+</menu>
