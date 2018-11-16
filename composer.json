@@ -1,0 +1,13 @@
+{
+  "name": "frosh/ioncube-checker",
+  "keywords": ["shopware", "plugin", "ioncube"],
+  "description": "IonCube check for Shopware plugins",
+  "license": "MIT",
+  "type": "shopware-plugin",
+  "extra": {
+    "installer-name": "FroshIonCubeChecker"
+  },
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

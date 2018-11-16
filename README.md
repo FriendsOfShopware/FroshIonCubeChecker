@@ -7,7 +7,7 @@ Simple plugin to list all [ionCube](http://www.ioncube.com/) encrypted plugins i
 ## Requirements
 
 * Shopware 5.2.x or higher
-* PHP 7.0 (newer PHP versions will not work )
+* PHP 7.0 (newer PHP versions will not work because there is no Shopware compatible ionCube version for >= PHP 7.1)
 
 ## Installation
 
@@ -19,6 +19,10 @@ Simple plugin to list all [ionCube](http://www.ioncube.com/) encrypted plugins i
 ### Git Version
 * Checkout Plugin in `/custom/plugins/FroshIonCubeChecker`.
 * Install the Plugin with the Plugin Manager.
+
+### Install with composer
+* Change to your root Installation of shopware.
+* Run command `composer require frosh/ioncube-checker` and install and active plugin with Plugin Manager.
 
 ## Features
 * A new backend module lists all ionCube encrypted plugins with detailed information such as name, author, install status and path to the plugin.
