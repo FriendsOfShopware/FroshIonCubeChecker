@@ -62,11 +62,9 @@ class IonCubeDetector
                 'status' => $this->getStatus($plugin),
                 'path' => $path,
             ];
-
-            return array_slice($encodedPlugins, $offset, $limit);
         }
 
-        return $encodedPlugins;
+        return array_slice($encodedPlugins, $offset, $limit);
     }
 
     /**

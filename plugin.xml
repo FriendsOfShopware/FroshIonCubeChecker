@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
     <label>IonCube Checker</label>
     <label lang="de">IonCube Checker</label>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <copyright>Friends of Shopware</copyright>
     <license>MIT</license>
     <link>https://github.com/FriendsOfShopware/FroshIonCubeChecker</link>
@@ -14,5 +14,8 @@
     </changelog>
     <changelog version="1.0.1">
         <changes>Composer added</changes>
+    </changelog>
+    <changelog version="1.0.2">
+        <changes>Fix: show all encoded plugins instead of only the first one.</changes>
     </changelog>
 </plugin>
