@@ -11,11 +11,14 @@
 
     <changelog version="1.0.0">
         <changes>🎉 Friends of Shopware Release 🎉</changes>
+        <changes lang="de">Friends of Shopware Release🎉</changes>
     </changelog>
     <changelog version="1.0.1">
         <changes>Composer added</changes>
+        <changes lang="de">Composer hinzugefügt</changes>
     </changelog>
     <changelog version="1.0.2">
         <changes>Fix: show all encoded plugins instead of only the first one.</changes>
+        <changes lang="de">Alle Verschlüsselten Plugins werden nun angezeigt anstatt nur eins</changes>
     </changelog>
 </plugin>
