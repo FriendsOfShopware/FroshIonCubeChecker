@@ -10,6 +10,16 @@
     <author>Friends of Shopware</author>
     <compatibility minVersion="5.4.0"/>
 
+    <description><![CDATA[
+This plugin adds an overview to show all Ioncube encrypted plugins inside the Shopware installation. Also, it shows a notification if that plugin is available in a newer version without Ioncube.
+        ]]>
+    </description>
+
+    <description lang="de"><![CDATA[
+Der Ioncube Checker zeigt dir alle Plugins im System an die noch Ioncube verwenden. Dazu wird noch angezeigt ob es eine neuere Plugin Version ohne Ioncube gibt.
+        ]]>
+    </description>
+    
     <changelog version="1.0.0">
         <changes>🎉 Friends of Shopware Release 🎉</changes>
         <changes lang="de">Friends of Shopware Release🎉</changes>
