@@ -8,7 +8,7 @@
     <license>MIT</license>
     <link>https://github.com/FriendsOfShopware/FroshIonCubeChecker</link>
     <author>Friends of Shopware</author>
-    <compatibility minVersion="5.4.0"/>
+    <compatibility minVersion="5.2.0"/>
 
     <description><![CDATA[
 This plugin adds an overview to show all Ioncube encrypted plugins inside the Shopware installation. Also, it shows a notification if that plugin is available in a newer version without Ioncube.
