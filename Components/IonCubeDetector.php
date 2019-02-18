@@ -6,8 +6,7 @@ use Shopware\Models\Plugin\Plugin;
 
 class IonCubeDetector
 {
-    const NAMESPACE_CUSTOM_PLUGINS = 'ShopwarePlugins';
-    const NAMESPACE_CUSTOM_PROJECT = 'ProjectPlugins';
+
 
     const STATUS_ACTIVATED = 'aktiviert';
     const STATUS_DEACTIVATED = 'deaktiviert';
@@ -20,21 +19,18 @@ class IonCubeDetector
      */
     private $pluginLoader;
 
-    /**
-     * @var array
-     */
-    protected $pluginDirectories;
+    protected $pluginPathService;
 
     /**
      * IonCubeDetector constructor.
      *
      * @param PluginLoader $pluginLoader
-     * @param array $pluginDirectories
+     * @param PluginPathServiceInterface $pluginPathService
      */
-    public function __construct(PluginLoader $pluginLoader, $pluginDirectories)
+    public function __construct(PluginLoader $pluginLoader, PluginPathServiceInterface $pluginPathService)
     {
         $this->pluginLoader = $pluginLoader;
-        $this->pluginDirectories = $pluginDirectories;
+        $this->pluginPathService = $pluginPathService;
     }
 
     /**
@@ -51,8 +47,7 @@ class IonCubeDetector
 
         /** @var Plugin $plugin */
         foreach ($plugins as $plugin) {
-            $isLegacy = $this->isLegacyPlugin($plugin);
-            $path = $this->getPluginPath($plugin, $isLegacy);
+            $path = $this->pluginPathService->create($plugin);
 
             $encoded = $this->scanPlugin($path);
 
@@ -89,48 +84,6 @@ class IonCubeDetector
         }
 
         return false;
-    }
-
-    /**
-     * @param Plugin $plugin
-     *
-     * @return bool
-     */
-    private function isLegacyPlugin(Plugin $plugin)
-    {
-        return $plugin->getSource()
-            && $plugin->getNamespace() != self::NAMESPACE_CUSTOM_PLUGINS
-            && $plugin->getNamespace() != self::NAMESPACE_CUSTOM_PROJECT
-        ;
-    }
-
-    /**
-     * @param Plugin $plugin
-     * @param bool   $isLegacy
-     *
-     * @return string
-     */
-    private function getPluginPath(Plugin $plugin, $isLegacy)
-    {
-        return $isLegacy ? $this->getPluginPathLegacy($plugin) : $this->getPluginPathCurrent($plugin);
-    }
-
-    /**
-     * @param Plugin $plugin
-     * @return string
-     */
-    protected function getPluginPathCurrent(Plugin $plugin)
-    {
-        return $this->pluginDirectories[$plugin->getNamespace()] . $plugin->getName();
-    }
-
-    /**
-     * @param Plugin $plugin
-     * @return string
-     */
-    protected function getPluginPathLegacy(Plugin $plugin)
-    {
-        return $this->pluginDirectories[$plugin->getSource()] . $plugin->getNamespace() . '/' . $plugin->getName();
     }
 
     /**
