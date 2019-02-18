@@ -10,9 +10,6 @@ use Shopware\Models\Plugin\Plugin;
  */
 class PluginPathService implements PluginPathServiceInterface
 {
-    const NAMESPACE_CUSTOM_PLUGINS = 'ShopwarePlugins';
-    const NAMESPACE_CUSTOM_PROJECT = 'ProjectPlugins';
-
     /**
      * @var array
      */
@@ -64,9 +61,6 @@ class PluginPathService implements PluginPathServiceInterface
      */
     protected function isLegacyPlugin(Plugin $plugin)
     {
-        return $plugin->getSource()
-            && $plugin->getNamespace() != self::NAMESPACE_CUSTOM_PLUGINS
-            && $plugin->getNamespace() != self::NAMESPACE_CUSTOM_PROJECT
-        ;
+        return $plugin->getSource() && in_array($plugin->getNamespace(), ['Frontend', 'Backend', 'Core']);
     }
 }
