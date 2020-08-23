@@ -6,8 +6,12 @@
         <service id="frosh_ion_cube_checker.plugin_loader" class="FroshIonCubeChecker\Components\PluginLoader">
             <argument type="service" id="models" />
         </service>
+        <service id="frosh_ion_cube_checker.plugin_path_service" class="FroshIonCubeChecker\Components\PluginPathService">
+            <argument>%shopware.plugin_directories%</argument>
+        </service>
         <service id="frosh_ion_cube_checker.ion_cube_detector" class="FroshIonCubeChecker\Components\IonCubeDetector">
             <argument type="service" id="frosh_ion_cube_checker.plugin_loader" />
+            <argument type="service" id="frosh_ion_cube_checker.plugin_path_service" />
         </service>
         <service id="frosh_ion_cube_checker.commands.ion_cube" class="FroshIonCubeChecker\Commands\IonCube">
             <tag name="console.command" />

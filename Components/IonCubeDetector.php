@@ -6,9 +6,7 @@ use Shopware\Models\Plugin\Plugin;
 
 class IonCubeDetector
 {
-    const PLUGIN_PATH_CURRENT = 'custom/plugins/';
-    const PLUGIN_PATH_LEGACY = 'engine/Shopware/Plugins/';
-    const PLUGIN_NAMESPACE_CURRENT = 'ShopwarePlugins';
+
 
     const STATUS_ACTIVATED = 'aktiviert';
     const STATUS_DEACTIVATED = 'deaktiviert';
@@ -21,14 +19,18 @@ class IonCubeDetector
      */
     private $pluginLoader;
 
+    protected $pluginPathService;
+
     /**
      * IonCubeDetector constructor.
      *
      * @param PluginLoader $pluginLoader
+     * @param PluginPathServiceInterface $pluginPathService
      */
-    public function __construct(PluginLoader $pluginLoader)
+    public function __construct(PluginLoader $pluginLoader, PluginPathServiceInterface $pluginPathService)
     {
         $this->pluginLoader = $pluginLoader;
+        $this->pluginPathService = $pluginPathService;
     }
 
     /**
@@ -45,8 +47,7 @@ class IonCubeDetector
 
         /** @var Plugin $plugin */
         foreach ($plugins as $plugin) {
-            $isLegacy = $this->isLegacyPlugin($plugin);
-            $path = $this->getPluginPath($plugin, $isLegacy);
+            $path = $this->pluginPathService->create($plugin);
 
             $encoded = $this->scanPlugin($path);
 
@@ -83,31 +84,6 @@ class IonCubeDetector
         }
 
         return false;
-    }
-
-    /**
-     * @param Plugin $plugin
-     *
-     * @return bool
-     */
-    private function isLegacyPlugin(Plugin $plugin)
-    {
-        return $plugin->getSource() && $plugin->getNamespace() != self::PLUGIN_NAMESPACE_CURRENT;
-    }
-
-    /**
-     * @param Plugin $plugin
-     * @param bool   $isLegacy
-     *
-     * @return string
-     */
-    private function getPluginPath(Plugin $plugin, $isLegacy)
-    {
-        if ($isLegacy) {
-            return self::PLUGIN_PATH_LEGACY . $plugin->getSource() . '/' . $plugin->getNamespace() . '/' . $plugin->getName();
-        } else {
-            return self::PLUGIN_PATH_CURRENT . $plugin->getName();
-        }
     }
 
     /**
